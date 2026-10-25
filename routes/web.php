@@ -15,10 +15,8 @@ Route::get('/about', function () {
 // Страница "Контакты" - передаем массив данных в шаблон через view
 Route::get('/contacts', function () {
     $contacts = [
-        ['name' => 'Телефон', 'value' => '+7 (999) 123-45-67'],
-        ['name' => 'Email', 'value' => 'info@mysite.ru'],
-        ['name' => 'Адрес', 'value' => 'г. Москва, ул. Большая Семёновская, д. 38'],
-        ['name' => 'Время работы', 'value' => 'Пн-Пт с 9:00 до 18:00'],
+        ['name' => 'Телефон', 'value' => '+7 (495) 223-05-23'],
+        ['name' => 'Email', 'value' => 'mospolytech@mospolytech.ru'],
     ];
 
     return view('contacts', ['contacts' => $contacts]);
