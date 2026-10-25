@@ -1,11 +1,13 @@
 <?php
 
+use App\Http\Controllers\MainController;
 use Illuminate\Support\Facades\Route;
 
-// Главная страница - приветствие
-Route::get('/', function () {
-    return view('main');
-});
+// Главная страница - вызываем метод index контроллера MainController
+Route::get('/', [MainController::class, 'index']);
+
+// Страница galery - показываем полную картинку
+Route::get('/galery/{full_image}', [MainController::class, 'galery']);
 
 // Страница "О нас"
 Route::get('/about', function () {

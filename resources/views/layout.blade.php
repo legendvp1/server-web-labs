@@ -39,9 +39,13 @@
         table {
             border-collapse: collapse;
         }
-        td {
+        td, th {
             border: 1px solid #ccc;
             padding: 8px 15px;
+            vertical-align: top;
+        }
+        th {
+            background-color: #eee;
         }
     </style>
 </head>
