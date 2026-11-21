@@ -47,6 +47,47 @@
         th {
             background-color: #eee;
         }
+        .article-table {
+            overflow-x: auto;
+        }
+        .article-table table {
+            width: 100%;
+            overflow-wrap: anywhere;
+        }
+        .article-actions form {
+            margin-top: 8px;
+        }
+        .pagination {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 16px;
+            margin-top: 20px;
+        }
+        .article-form label {
+            display: block;
+            margin-bottom: 4px;
+        }
+        .article-form input[type="text"], .article-form textarea {
+            box-sizing: border-box;
+            width: 100%;
+            padding: 8px;
+            font: inherit;
+        }
+        .article-images {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        .article-images label {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .article-body {
+            white-space: pre-line;
+            overflow-wrap: anywhere;
+        }
     </style>
 </head>
 <body>

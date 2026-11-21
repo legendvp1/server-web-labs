@@ -17,14 +17,14 @@ class ArticleFactory extends Factory
      */
     public function definition(): array
     {
-        $imageSuffix = fake()->randomElement(['', '_2']);
+        $fullImage = fake()->randomElement(array_keys(Article::IMAGES));
 
         return [
             'title' => fake()->sentence(4),
             'summary' => fake()->sentence(10),
             'content' => fake()->paragraph(4),
-            'preview_image' => "preview{$imageSuffix}.jpg",
-            'full_image' => "full{$imageSuffix}.jpeg",
+            'preview_image' => Article::IMAGES[$fullImage],
+            'full_image' => $fullImage,
             'created_at' => fake()->dateTimeBetween('-1 year'),
         ];
     }

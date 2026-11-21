@@ -12,4 +12,9 @@ class Article extends Model
 {
     /** @use HasFactory<ArticleFactory> */
     use HasFactory;
+
+    public const IMAGES = [
+        'full.jpeg' => 'preview.jpg',
+        'full_2.jpeg' => 'preview_2.jpg',
+    ];
 }
