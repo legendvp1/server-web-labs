@@ -56,6 +56,7 @@
             <a href="/">Главная</a>
             <a href="/about">О нас</a>
             <a href="/contacts">Контакты</a>
+            <a href="{{ route('signin') }}">Регистрация</a>
         </nav>
     </header>
 
