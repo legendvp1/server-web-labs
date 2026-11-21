@@ -3,6 +3,7 @@
 namespace Tests\Feature;
 
 use App\Models\Article;
+use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
@@ -31,6 +32,8 @@ class ArticleCrudTest extends TestCase
 
     public function test_an_article_can_be_created_viewed_edited_and_deleted(): void
     {
+        $this->actingAs(User::factory()->create(), 'web');
+
         $data = [
             'title' => 'Новая статья для проверки',
             'summary' => 'Краткое описание для проверки',
@@ -63,6 +66,8 @@ class ArticleCrudTest extends TestCase
 
     public function test_creation_and_editing_reject_invalid_data(): void
     {
+        $this->actingAs(User::factory()->create(), 'web');
+
         $invalid = ['title' => '', 'summary' => '', 'content' => '', 'full_image' => 'other.jpeg'];
         $fields = array_keys($invalid);
 

@@ -9,7 +9,9 @@
         <p role="status">{{ session('status') }}</p>
     @endif
 
-    <p><a href="{{ route('articles.create') }}">Добавить статью</a></p>
+    @auth
+        <p><a href="{{ route('articles.create') }}">Добавить статью</a></p>
+    @endauth
 
     <div class="article-table">
         <table>
@@ -20,7 +22,9 @@
                     <th scope="col">Картинка</th>
                     <th scope="col">Краткое описание</th>
                     <th scope="col">Описание</th>
-                    <th scope="col">Действия</th>
+                    @auth
+                        <th scope="col">Действия</th>
+                    @endauth
                 </tr>
             </thead>
             <tbody>
@@ -35,18 +39,20 @@
                         </td>
                         <td>{{ $article->summary }}</td>
                         <td>{{ $article->content }}</td>
-                        <td class="article-actions">
-                            <a href="{{ route('articles.edit', $article) }}">Редактировать</a>
-                            <form action="{{ route('articles.destroy', $article) }}" method="post" onsubmit="return confirm('Удалить статью?')">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" aria-label="Удалить статью «{{ $article->title }}»">Удалить</button>
-                            </form>
-                        </td>
+                        @auth
+                            <td class="article-actions">
+                                <a href="{{ route('articles.edit', $article) }}">Редактировать</a>
+                                <form action="{{ route('articles.destroy', $article) }}" method="post" onsubmit="return confirm('Удалить статью?')">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" aria-label="Удалить статью «{{ $article->title }}»">Удалить</button>
+                                </form>
+                            </td>
+                        @endauth
                     </tr>
                 @empty
                     <tr>
-                        <td colspan="6">На этой странице нет статей.</td>
+                        <td colspan="{{ auth()->check() ? 6 : 5 }}">На этой странице нет статей.</td>
                     </tr>
                 @endforelse
             </tbody>

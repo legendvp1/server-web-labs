@@ -16,6 +16,8 @@
     </a>
     <p class="article-body">{{ $article->content }}</p>
 
-    <p><a href="{{ route('articles.edit', $article) }}">Редактировать</a></p>
+    @auth
+        <p><a href="{{ route('articles.edit', $article) }}">Редактировать</a></p>
+    @endauth
     <p><a href="{{ route('articles.index') }}">К списку статей</a></p>
 @endsection

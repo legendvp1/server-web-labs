@@ -33,9 +33,11 @@
 
         <p>
             <label for="password">Пароль</label><br>
-            <input type="password" id="password" name="password" autocomplete="new-password" minlength="8" required>
+            <input type="password" id="password" name="password" autocomplete="new-password" minlength="8" maxlength="72" required>
         </p>
 
         <button type="submit">Зарегистрироваться</button>
     </form>
+
+    <p><a href="{{ route('login') }}">Войти в аккаунт</a></p>
 @endsection

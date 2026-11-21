@@ -23,6 +23,13 @@
         header a:hover {
             text-decoration: underline;
         }
+        .account-name {
+            color: white;
+            margin-right: 12px;
+        }
+        .logout-form {
+            display: inline;
+        }
         main {
             background-color: white;
             margin: 30px auto;
@@ -97,7 +104,16 @@
             <a href="/">Главная</a>
             <a href="/about">О нас</a>
             <a href="/contacts">Контакты</a>
-            <a href="{{ route('signin') }}">Регистрация</a>
+            @auth
+                <span class="account-name">{{ auth()->user()->name }}</span>
+                <form class="logout-form" action="{{ route('logout') }}" method="post">
+                    @csrf
+                    <button type="submit">Выйти</button>
+                </form>
+            @else
+                <a href="{{ route('login') }}">Вход</a>
+                <a href="{{ route('signin') }}">Регистрация</a>
+            @endauth
         </nav>
     </header>
 
