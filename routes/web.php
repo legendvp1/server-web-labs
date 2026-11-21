@@ -1,14 +1,14 @@
 <?php
 
+use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\MainController;
 use Illuminate\Support\Facades\Route;
 
-// Главная страница - вызываем метод index контроллера MainController
-Route::get('/', [MainController::class, 'index']);
+Route::get('/', [ArticleController::class, 'index']);
 
 // Страница galery - показываем полную картинку
-Route::get('/galery/{full_image}', [MainController::class, 'galery']);
+Route::get('/galery/{full_image}', [MainController::class, 'galery'])->name('galery');
 
 Route::get('/signin', [AuthController::class, 'create'])->name('signin');
 Route::post('/signin', [AuthController::class, 'registration'])->name('signin.registration');

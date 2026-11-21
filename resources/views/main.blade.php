@@ -13,18 +13,22 @@
             <th>Краткое описание</th>
             <th>Описание</th>
         </tr>
-        @foreach ($articles as $article)
+        @forelse ($articles as $article)
             <tr>
-                <td>{{ $article['Дата'] }}</td>
-                <td>{{ $article['Название'] }}</td>
+                <td>{{ $article->created_at?->format('d.m.Y') }}</td>
+                <td>{{ $article->title }}</td>
                 <td>
-                    <a href="/galery/{{ $article['full_image'] }}">
-                        <img src="/{{ $article['preview_image'] }}" alt="{{ $article['Название'] }}" width="150">
+                    <a href="{{ route('galery', ['full_image' => $article->full_image]) }}">
+                        <img src="/{{ $article->preview_image }}" alt="{{ $article->title }}" width="150">
                     </a>
                 </td>
-                <td>{{ $article['Краткое описание'] }}</td>
-                <td>{{ $article['Описание'] }}</td>
+                <td>{{ $article->summary }}</td>
+                <td>{{ $article->content }}</td>
             </tr>
-        @endforeach
+        @empty
+            <tr>
+                <td colspan="5">Пока нет статей.</td>
+            </tr>
+        @endforelse
     </table>
 @endsection
